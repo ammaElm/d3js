@@ -28,8 +28,18 @@ export default {
     // ]
     this.graph.text("The Graph")
         .select("#graph")
-    let _this = this
-    let nodes = this.graph.selectAll('circle .nodes')
+
+    this.drawNode()
+
+    this.drawLine()
+    
+
+  },
+  methods: {
+    drawNode(){
+      let _this = this
+      this.graph.selectAll('.nodes').remove()
+      this.graph.selectAll('circle .nodes')
         .data(this.nodes)
         .enter().append('svg:circle')
         .attr('class','notes')
@@ -54,20 +64,6 @@ export default {
             d3.select(this).classed("active", false);
           })
         )
-
-    this.drawLine()
-    
-
-  },
-  methods: {
-    nodeStart(node){
-      console.log(d3.event.x)
-    },
-    nodeDrag(node){
-      console.log(d3.event.x)
-    },
-    nodeEnd(){
-
     },
     drawLine(){
       let links = [
@@ -84,6 +80,23 @@ export default {
         .attr('x2',d => {return d.target.x})
         .attr('y2',d => {return d.target.y})
         .style('stroke','rgb(6,120,155)')
+        .style('stroke-width','2px')
+        .on('click',(d)=>{
+          console.log(d3.event)
+            let newNode = {
+              x: d3.event.x,
+              y: d3.event.y,
+              name: 'nnn'
+            }
+            let node = d.source
+            this.nodes.map((n,i)=>{
+              if(n===node){
+                this.nodes.splice(i,0,newNode)
+              }
+            })
+            // console.log(this.nodes)
+            this.drawNode()
+        })
     }
     
   }

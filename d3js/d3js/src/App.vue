@@ -5,8 +5,8 @@
       <router-link to="/clock">Clock</router-link> |
       <router-link to="/graph">Graph</router-link> |
       <router-link to="/line">Line</router-link> |
-      <router-link to="/forceDirectedGraph">ForceDirectedGraph</router-link>
-      
+      <router-link to="/forceDirectedGraph">ForceDirectedGraph</router-link> |
+      <router-link to="/tree">Tree</router-link>
     </div>
     <router-view />
   </div>

@@ -5,6 +5,7 @@ import Clock from "./components/Clock";
 import Graph from "./components/Graph";
 import Line from "./components/Line"
 import ForceDirectedGraph from './components/Force-directed-graph';
+import Tree from './components/Tree';
 
 Vue.use(Router);
 
@@ -43,6 +44,11 @@ export default new Router({
       path: "/forceDirectedGraph",
       name: "forceDirectedGraph",
       component: ForceDirectedGraph
+    },
+    {
+      path: "/tree",
+      name: "tree",
+      component: Tree
     }
 
   ]
